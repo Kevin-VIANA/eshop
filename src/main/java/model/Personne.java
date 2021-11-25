@@ -1,22 +1,28 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 
 @Entity //Obligatoire
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name="Personne")
-public class Personne {
+public abstract class Personne  {
 
 	@Id//Obligatoire
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Obligatoire*
-	private int numero;
+	protected int id;
 	//@Id prendra le premier attribut qui sera en dessous comme auto incrément
-	private String nom;
-	private String prenom;
+	protected String nom;
+	protected String prenom;
+	
+	
 	
 	//Obligatoire
 	public Personne() {}
@@ -32,13 +38,16 @@ public class Personne {
 
 	
 
-	public int getNumero() {
-		return numero;
+
+
+
+	public int getId() {
+		return id;
 	}
 
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
@@ -67,8 +76,11 @@ public class Personne {
 
 	@Override
 	public String toString() {
-		return "Personne [numero=" + numero + ", nom=" + nom + ", prenom=" + prenom + "]";
+		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
 	}
+
+
+	
 
 
 
