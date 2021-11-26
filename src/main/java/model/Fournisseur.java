@@ -1,8 +1,10 @@
 package model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 @Entity
+@DiscriminatorValue("fournisseurs")
 public class Fournisseur extends Personne{
 
 		private String societe;
@@ -25,10 +27,13 @@ public class Fournisseur extends Personne{
 			this.societe = societe;
 		}
 
+
 		@Override
 		public String toString() {
-			return "Fournisseur [societe=" + societe + ", id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
+			return "Fournisseur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse
+					+ ", societe=" + societe + "]";
 		}
+
 		
 	
 }
